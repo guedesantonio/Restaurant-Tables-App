@@ -4,6 +4,8 @@
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -61,7 +63,24 @@
 
 	</div>
 
+<script type="text/javascript">
+   
+    $(".btn").on("click", function(event) {
+      event.preventDefault();
+      const newReservation = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueid: $("#uniqueID").val().trim()
+      };
 
+      $.post("/api/tables", newReservation)
+        .then(function(data) {
+          console.log("tables.html", data);
+          alert("Yay! You are officially booked!");
+        });
+    });
+  </script>
 
 
 </body>
