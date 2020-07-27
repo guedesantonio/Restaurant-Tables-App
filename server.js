@@ -31,6 +31,7 @@ app.get("/api/tables", (req, res) => {
   app.post("/api/tables", (req, res) => {
     const newReservation = req.body;
     tables.push(newReservation);
+    res.send("");
   });
 
 // * Create a set of routes for displaying the HTML pages

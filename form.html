@@ -20,7 +20,7 @@
 
 			<div class="text-center">
 				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-				<a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
+				<a href="/form"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
 			</div>
 
         </div>
@@ -48,7 +48,7 @@
                     <br>
                     <input type="text" id="uniqueID">
                 </div>
-                <button class="btn">Submit</button>
+                <button class="btn" id="submit">Submit</button>
                 
             </form>
     
@@ -65,7 +65,7 @@
 
 <script type="text/javascript">
    
-    $(".btn").on("click", function(event) {
+    $("#submit").on("click", function(event) {
       event.preventDefault();
       const newReservation = {
         name: $("#name").val().trim(),
@@ -74,7 +74,9 @@
         uniqueid: $("#uniqueID").val().trim()
       };
 
-      $.post("/api/tables", newReservation)
+      var currentURL = window.location.origin;
+
+      $.post(currentURL + "/api/tables", newReservation)
         .then(function(data) {
           console.log("tables.html", data);
           alert("Yay! You are officially booked!");
