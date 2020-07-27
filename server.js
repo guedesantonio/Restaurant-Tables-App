@@ -24,11 +24,25 @@ const tables = [
 
 // * Create a set of routes for getting and posting table data
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "view.html"));
+app.get("/api/tables", (req, res) => {
+    res.json(tables);
   });
 
+
+
 // * Create a set of routes for displaying the HTML pages
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+  });
+
+app.get("/form", (req, res) => {
+res.sendFile(path.join(__dirname, "form.html"));
+});
+
+app.get("/tables", (req, res) => {
+    res.sendFile(path.join(__dirname, "tables.html"));
+  });
 
 // * Use jQuery to run AJAX calls to GET and POST data from users to the Express server
 
