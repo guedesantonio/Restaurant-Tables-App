@@ -74,10 +74,22 @@ $("#")
 $.get("/api/tables").then( (data) => {
   console.log(data);
 
+  for(let i=1;i<data.length && i<6; i++){
+    let li = $("<li>").append(data[i]);
+    $("#tableList").append(li);
 
   }
 
-)
+  for(let i=6;i<data.length; i++){
+    let wait = $("<li>").append(data[i]);
+    $("#waitList").append(wait);
+
+    }
+
+
+  }
+
+);
 
 
 
